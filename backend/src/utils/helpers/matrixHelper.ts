@@ -28,8 +28,6 @@ export function resetGridHistory() {
 
 export function addGridHistory(timestamp: number, payload: Payload) {
   currentGridContext[payload.row][payload.col] = payload;
-  // interval window to group message
-  const INTERVAL_WINDOW =  60 * 1000;;
 
   if (allTimeLines.length === 0) {
     allTimeLines.push(timestamp);
@@ -37,8 +35,10 @@ export function addGridHistory(timestamp: number, payload: Payload) {
 
     return;
   }
+  // interval window of 1 second to group message
+  const INTERVAL_WINDOW = 1000;
 
-  // Find an existing timeline within the INTERVAL_WINDOW
+  // Findind an existing timeline within the INTERVAL_WINDOW
   const existingTimeline = allTimeLines.find(
     (timeLine) =>
       timestamp - timeLine < INTERVAL_WINDOW && timestamp >= timeLine
@@ -47,7 +47,7 @@ export function addGridHistory(timestamp: number, payload: Payload) {
   if (existingTimeline !== undefined) {
     gridHistory[existingTimeline].push(payload);
   } else {
-    // Create a new timeline if no match is found
+    // Createing a new timeline if no match is found
     gridHistory[timestamp] = [payload];
     allTimeLines.push(timestamp);
   }
@@ -56,6 +56,6 @@ export function addGridHistory(timestamp: number, payload: Payload) {
 }
 
 export const getGridHistory = (timeLine: number) => {
-  if (timeLine === 0) return;
+  if (timeLine === 0 && timeLine! > allTimeLines.length) return;
   return gridHistory[allTimeLines[allTimeLines.length - timeLine]];
 };

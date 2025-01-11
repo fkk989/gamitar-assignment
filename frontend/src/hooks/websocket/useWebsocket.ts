@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { WS_URL } from "../../utils/constants";
+
 import { MessageType, Payload } from "../../utils/types";
 import toast from "react-hot-toast";
+import { WS_URL } from "../../utils/constants";
 
 export interface WebSocketParam {
   matrix: {

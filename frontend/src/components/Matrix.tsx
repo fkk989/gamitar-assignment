@@ -32,7 +32,7 @@ export const Matrix: React.FC<MatrixProp> = ({ rows, columns }) => {
   return (
     <div className="flex flex-col gap-[5px]">
       {/* total online user  */}
-      <div className="fixed top-[30px] right-[50px] w-[200px] tab:w-[250px] h-[50px] bg-black flex justify-center items-center text-white font-bold text-[20px] rounded-md">
+      <div className="fixed top-[30px] right-[10px] mobile:right-[50px] w-[200px] tab:w-[250px] h-[50px] bg-black flex justify-center items-center text-white font-bold text-[20px] rounded-md">
         Players online: {onlineUsers != 0 ? onlineUsers : "N"}
       </div>
       <>
@@ -63,7 +63,7 @@ export const Matrix: React.FC<MatrixProp> = ({ rows, columns }) => {
                     e.preventDefault();
                   }
                 }}
-                className="w-[30px] h-[30px] mobile:w-[40px] mobile:h-[40px] tab:w-[50px] tab:h-[50px]  pc:w-[60px] pc:h-[60px] text-center font-bold text-[18px] border border-gray-300 rounded focus:outline-none focus:ring focus:ring-blue-200"
+                className="w-[30px] h-[30px] mobile:w-[40px] mobile:h-[40px] tab:w-[50px] tab:h-[50px]  pc:w-[60px] pc:h-[60px] text-center font-bold text-[18px] mobile:text-[25px] border border-gray-300 rounded focus:outline-none focus:ring focus:ring-blue-200"
               />
             ))}
           </div>
@@ -82,7 +82,9 @@ export const Matrix: React.FC<MatrixProp> = ({ rows, columns }) => {
         </button>
         {/* countdown after every request */}
         {startCountDown ? (
-          <Countdown disableCells={disableCells} setStart={setStartCountDown} />
+          <div className="w-[200px] mobile:w-[300px] tab:w-[400px]">
+            <Countdown disableCells={disableCells} setStart={setStartCountDown} />
+          </div>
         ) : (
           <button
             onClick={() => {

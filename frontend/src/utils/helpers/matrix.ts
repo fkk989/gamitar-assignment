@@ -1,17 +1,18 @@
 import { SetStateAction } from "react";
 import { WebSocketParam } from "../../hooks/websocket";
-import { BACKEND_URL } from "../constants";
 import toast from "react-hot-toast";
+import { BACKEND_URL } from "../constants";
 
 export async function fetchCurrentContext(
   setMatrix: WebSocketParam["setMatrix"]
 ) {
   try {
-    const res = await fetch(`${BACKEND_URL}/matrix/current`);
+    const res = await fetch(`${BACKEND_URL}/api/matrix/current`);
     const { context } = (await res.json()) as {
       context: WebSocketParam["matrix"];
     };
 
+    console.log("current" , context)
     setMatrix(context);
   } catch (e: any) {
     console.log("error while fetching current context", e.message);
@@ -31,7 +32,7 @@ export async function getGridHistory(
 
   try {
     const res = await fetch(
-      `${BACKEND_URL}/matrix/history?timeLine=${timeLine}`
+      `${BACKEND_URL}/api/matrix/history?timeLine=${timeLine}`
     );
 
     const data = (await res.json()) as {

@@ -17,7 +17,7 @@ const app = express();
 app.use(cors(), express.json());
 
 // matrix routes to get current context and history of matrix
-app.use("/matrix", matrixRouter);
+app.use("/api/matrix", matrixRouter);
 
 const httpServer = https.createServer(app);
 
@@ -35,7 +35,6 @@ wss.on("connection", (ws: CustomWebSocket, req) => {
 
   //handling user updates
   ws.on("message", (message) => {
-    
     const currenttime = Date.now();
 
     if (!rateLimiter(ws.userId)) {
@@ -78,7 +77,7 @@ wss.on("connection", (ws: CustomWebSocket, req) => {
   });
 });
 
-app.get("/health", (req, res) => {
+app.get("/api/health", (req, res) => {
   res.json({
     success: true,
     message: `server running fine`,

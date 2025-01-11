@@ -27,7 +27,7 @@ export const Countdown: React.FC<CountdownProps> = ({
 
   return (
     <div className="w-full flex items-center justify-center">
-      <div className="w-[250px] h-[50px] bg-[#0000009f] flex justify-center items-center text-white font-bold text-[20px] rounded-md cursor-not-allowed">
+      <div className="w-full h-[50px] bg-[#0000009f] flex justify-center items-center text-white font-bold text-[16px] rounded-md cursor-not-allowed">
         Wait for : {timeLeft} seconds
       </div>
     </div>
