@@ -1,0 +1,1 @@
+{"root":["./process.env.d.ts","./src/index.ts","./src/app/index.ts","./src/routes/index.ts","./src/routes/matrix.ts","./src/services/websocketservice.ts","./src/utils/helpers/matrixhelper.ts","./src/utils/helpers/ratelimiter.ts","./src/utils/schema/index.ts","./src/utils/types/index.ts"],"version":"5.7.3"}
